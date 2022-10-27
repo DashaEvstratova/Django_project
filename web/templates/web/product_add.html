@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Добавление товара</title>
+    <style>
+        body {
+            background: #FFE4B5;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+<link rel="icon" href="data:;base64,=">
+<body>
+<h1>Добавление товара</h1>
+{% if error %}
+    <b>Возникли ошибки при заполнении формы. Пожалуйста, исправьте их:</b>
+    {{ error }}
+{% endif %}
+<form action=""  enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    <label>
+        Название товара
+        <input type="text" name="name" placeholder="Введите название товара", value="{{ name }}">
+    </label>
+    <br><br>
+    <label>
+        Стоимость товара
+        <input type="text" name="price" placeholder="Введите стоимость товара", value="{{ price }}">
+    </label>
+    <br><br>
+    <label>
+        Описание товара
+        <input type="text" name="description" placeholder="Введите описание товара", value="{{ description }}">
+    </label>
+    <br><br>
+    <button>Добавить товар</button>
+</form>
+</body>
+</html>

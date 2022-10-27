@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Регистрация</title>
+    <style>
+        body {
+            background: #FFE4B5;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        .form-container{
+            background: #ecf0f3;
+            font-family: 'Nunito', sans-serif;
+            width: 400px;
+            padding: 40px;
+            border-radius: 10px;
+            margin: 0 auto 14px;
+            box-shadow: 14px 14px 17px #cbced1, -14px -14px 20px white;
+        }
+
+        .form-container .form-icon{
+            color: #e3b8e2;
+            font-size: 55px;
+            text-align: center;
+            line-height: 100px;
+            width: 100px;
+            height:100px;
+            margin: 0 auto 15px;
+            border-radius: 50px;
+            box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px #fff;
+        }
+
+        .form-container .title{
+            color: #e3b8e2;
+            font-size: 25px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+            margin: 0 0 20px;
+        }
+
+        .form-container .form-horizontal .form-group label{
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        button{
+            color: #000;
+            background-color: #e3b8e2;
+            font-size: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+            width: 100%;
+            padding: 18px 79px 19px;
+            border-radius: 20px;
+            box-shadow: 6px 6px 6px #ffffff, -6px -6px 6px #ffffff;
+            border: none;
+            transition: all 0.5s ease 0s;
+        }
+
+        button:hover,
+        button:focus{
+            color: #FFE4B5;
+            letter-spacing: 4px;
+            box-shadow: none;
+            outline: none;
+        }
+        form{
+            height: 10px;
+            padding: 20px;
+            display: inline-block;
+            transition: all 0.3s ease 0s;
+            outline: none;
+            color: #808080;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+
+    <div class="col-md-4 offset-md-4">
+        <div class="form-container">
+            <div class="form-icon"><i class="fa fa-user"></i></div>
+            <h3 class="title">Регистрация</h3>
+
+            {% if form.errors %}
+                <b>Пожалуйста, исправьте ошибки:</b>
+                {{ form.errors }}
+            {% endif %}
+
+            {% if is_success %}
+                <p><b>Вы успешно зарегистрированы!</b></p>
+                <a href="{% url 'menus' %}">Главная страница</a>
+            {% else %}
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="btn btn-default">Зарегистрироваться</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

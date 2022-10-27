@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>products.name</title>
+    <style>
+        body {
+            background: #FFE4B5;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+    <link rel="icon" href="data:;base64,=">
+</head>
+<body>
+<div style="margin-left: 45% ">
+    <table>
+        <tr>
+            <h1>{{products.name}}</h1>
+            <br>
+            <p>{{ products.price }} руб.</p>
+            <p>{{ products.description}}</p>
+        </tr>
+    </table>
+    <a href="{% url 'menus' %}">Главная страница</a>
+</div>
+</body>
+</html>
